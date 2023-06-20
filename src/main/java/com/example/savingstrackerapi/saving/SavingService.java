@@ -165,12 +165,15 @@ public class SavingService {
     String userEmail = extractEmail(request);
     User user = this.userRepository.findByEmail(userEmail).orElseThrow();
 
-    Saving savingToDelete = user.getSavingList()
+    List<Saving> savings = user.getSavingList();
+    Saving savingToDelete = savings
             .stream()
             .filter(saving -> saving.getAsset().getCode().equals(assetCode.toUpperCase()))
             .findFirst().orElseThrow();
 
-    savingRepository.delete(savingToDelete);
+    savings.remove(savingToDelete);
+
+    savingRepository.deleteById(savingToDelete.getId());
   }
 
   private String extractEmail(HttpServletRequest request) {

@@ -3,10 +3,7 @@ package com.example.savingstrackerapi.saving;
 import com.example.savingstrackerapi.asset.Asset;
 import com.example.savingstrackerapi.user.User;
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 import java.util.UUID;
 
